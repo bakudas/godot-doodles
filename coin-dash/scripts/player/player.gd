@@ -1,6 +1,6 @@
 extends Area2D
 
-signal pickup
+signal pickup(amount: int)
 signal hurt
 
 @export var speed: int = 350
@@ -14,13 +14,14 @@ func reset_player_position() -> void:
 	position.y = DisplayServer.window_get_size().y / 2
 
 
-func take_damage() -> void:
+func die() -> void:
 	hurt.emit()
+	set_process(false)
 
 
 func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group('coins'):
 		area.pickup()
-		pickup.emit()
+		pickup.emit(area.points)
 	if area.is_in_group('obstacles'):
-		take_damage()
+		die()

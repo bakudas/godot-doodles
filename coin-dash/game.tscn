@@ -1,13 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://htc36o21x7hb"]
+[gd_scene load_steps=6 format=3 uid="uid://htc36o21x7hb"]
 
 [ext_resource type="PackedScene" uid="uid://n6rs7naiycf3" path="res://player.tscn" id="1_e2o6t"]
 [ext_resource type="Script" uid="uid://djsd6a71vkhvn" path="res://scripts/game.gd" id="1_fc0e3"]
 [ext_resource type="Texture2D" uid="uid://db8h8v1xpdad2" path="res://assets/grass.png" id="2_7jktm"]
 [ext_resource type="PackedScene" uid="uid://bgq625uqqmo83" path="res://coin.tscn" id="2_feb5d"]
+[ext_resource type="PackedScene" uid="uid://b73t3amrootsr" path="res://HUD.tscn" id="4_7jktm"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_fc0e3")
 coin_scene = ExtResource("2_feb5d")
+playtime = 10
 
 [node name="Background" type="TextureRect" parent="."]
 offset_right = 480.0
@@ -15,7 +17,17 @@ offset_bottom = 720.0
 texture = ExtResource("2_7jktm")
 stretch_mode = 1
 
+[node name="HUD" parent="Background" instance=ExtResource("4_7jktm")]
+layout_mode = 1
+
 [node name="GameTimer" type="Timer" parent="."]
 
 [node name="Player" parent="." instance=ExtResource("1_e2o6t")]
 position = Vector2(148, 294)
+
+[connection signal="new_level" from="." to="Background/HUD" method="_on_game_new_level"]
+[connection signal="update_hud_score" from="." to="Background/HUD" method="_on_game_update_hud_score"]
+[connection signal="start_game" from="Background/HUD" to="." method="_on_hud_start_game"]
+[connection signal="timeout" from="GameTimer" to="." method="_on_game_timer_timeout"]
+[connection signal="hurt" from="Player" to="." method="_on_player_hurt"]
+[connection signal="pickup" from="Player" to="." method="_on_player_pickup"]

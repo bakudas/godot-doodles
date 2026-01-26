@@ -9,3 +9,7 @@ func _on_movement_run() -> void:
 
 func _on_movement_idle() -> void:
 	$"../AnimatedSprite2D".play("idle")
+
+
+func _on_player_hurt() -> void:
+	$"../AnimatedSprite2D".play("hurt")

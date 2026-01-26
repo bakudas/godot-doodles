@@ -1,0 +1,71 @@
+[gd_scene load_steps=3 format=3 uid="uid://b73t3amrootsr"]
+
+[ext_resource type="Script" uid="uid://olqe3rxqpho8" path="res://scripts/hud.gd" id="1_efote"]
+[ext_resource type="FontFile" uid="uid://cy4ejx4kxnfqp" path="res://assets/Kenney Bold.ttf" id="1_k5de2"]
+
+[node name="HUD" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_efote")
+
+[node name="score" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+theme_override_fonts/normal_font = ExtResource("1_k5de2")
+theme_override_font_sizes/normal_font_size = 32
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="time" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -64.0
+offset_bottom = 64.0
+grow_horizontal = 0
+theme_override_fonts/normal_font = ExtResource("1_k5de2")
+theme_override_font_sizes/normal_font_size = 32
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="message" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.6
+offset_bottom = -3.0517578e-05
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("1_k5de2")
+theme_override_font_sizes/normal_font_size = 32
+text = "Coin Dash!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -80.0
+offset_top = -88.0
+offset_right = 106.095
+offset_bottom = -24.265015
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("1_k5de2")
+theme_override_font_sizes/font_size = 24
+text = "START!"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
