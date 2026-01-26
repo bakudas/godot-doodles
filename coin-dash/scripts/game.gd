@@ -44,14 +44,14 @@ func new_game() -> void:
 
 
 func spawn_coins() -> void:
-	for i in level + 4:
+	for i in level + time_left:
 		var c = coin_scene.instantiate()
 		add_child(c)
 		c.position = Vector2(
 			randi_range(0, DisplayServer.window_get_size().x),
 			randi_range(0, DisplayServer.window_get_size().y)
 			)
-		print(c.position)
+		#print(c.position)
 	$Audio/AudioStreamPlayer.stream = level_sound
 	$Audio/AudioStreamPlayer.play()
 
