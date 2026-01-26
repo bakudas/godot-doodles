@@ -5,10 +5,12 @@ signal update_hud_score(amount: int)
 signal on_game_over
 
 @export var coin_scene: PackedScene
+@export var powerup_scene: PackedScene
 @export var playtime: int
 
 @export_group("Audios", "audio_")
 @export var coin_sound: AudioStream
+@export var powerup_sound: AudioStream
 @export var end_sound: AudioStream
 @export var level_sound: AudioStream
 
@@ -75,11 +77,16 @@ func _on_hud_start_game() -> void:
 	new_game()
 
 
-func _on_player_pickup(amount: int) -> void:
-	$Audio/AudioStreamPlayer.stream = coin_sound
+func _on_player_pickup(amount: int, type: String) -> void:
+	match type:
+		"coin":
+			$Audio/AudioStreamPlayer.stream = coin_sound
+			update_hud_score.emit(update_score(amount))
+		"powerup":
+			time_left += 5
+			$Audio/AudioStreamPlayer.stream = powerup_sound
+			$Background/HUD.update_timer(time_left)
 	$Audio/AudioStreamPlayer.play()
-	update_hud_score.emit(update_score(amount))
-
 
 func _on_game_timer_timeout() -> void:
 	time_left -= 1
@@ -90,3 +97,12 @@ func _on_game_timer_timeout() -> void:
 
 func _on_player_hurt() -> void:
 	game_over()
+
+
+func _on_powerup_timer_timeout() -> void:
+	var pu = powerup_scene.instantiate()
+	add_child(pu)
+	pu.position = Vector2(
+			randi_range(0, DisplayServer.window_get_size().x),
+			randi_range(0, DisplayServer.window_get_size().y)
+			)

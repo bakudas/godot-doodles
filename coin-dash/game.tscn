@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://htc36o21x7hb"]
+[gd_scene load_steps=11 format=3 uid="uid://htc36o21x7hb"]
 
 [ext_resource type="PackedScene" uid="uid://n6rs7naiycf3" path="res://player.tscn" id="1_e2o6t"]
 [ext_resource type="Script" uid="uid://djsd6a71vkhvn" path="res://scripts/game.gd" id="1_fc0e3"]
@@ -9,10 +9,12 @@
 [ext_resource type="AudioStream" uid="uid://dcg7on4ny41uk" path="res://assets/audio/EndSound.wav" id="4_vef74"]
 [ext_resource type="AudioStream" uid="uid://bw8llwsatwaqt" path="res://assets/audio/Level.wav" id="5_hve3p"]
 [ext_resource type="PackedScene" uid="uid://cl65vid0d1syy" path="res://obstacle.tscn" id="9_vef74"]
+[ext_resource type="PackedScene" uid="uid://dopg421itw6gy" path="res://powerup.tscn" id="10_hve3p"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_fc0e3")
 coin_scene = ExtResource("2_feb5d")
+powerup_scene = ExtResource("10_hve3p")
 playtime = 10
 coin_sound = ExtResource("3_j5wjh")
 end_sound = ExtResource("4_vef74")
@@ -28,6 +30,11 @@ stretch_mode = 1
 layout_mode = 1
 
 [node name="GameTimer" type="Timer" parent="."]
+
+[node name="PowerupTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
 
 [node name="Player" parent="." instance=ExtResource("1_e2o6t")]
 position = Vector2(148, 294)
@@ -46,5 +53,6 @@ position = Vector2(200, 488)
 [connection signal="update_hud_score" from="." to="Background/HUD" method="_on_game_update_hud_score"]
 [connection signal="start_game" from="Background/HUD" to="." method="_on_hud_start_game"]
 [connection signal="timeout" from="GameTimer" to="." method="_on_game_timer_timeout"]
+[connection signal="timeout" from="PowerupTimer" to="." method="_on_powerup_timer_timeout"]
 [connection signal="hurt" from="Player" to="." method="_on_player_hurt"]
 [connection signal="pickup" from="Player" to="." method="_on_player_pickup"]
