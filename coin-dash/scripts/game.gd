@@ -6,6 +6,12 @@ signal on_game_over
 
 @export var coin_scene: PackedScene
 @export var playtime: int
+
+@export_group("Audios", "audio_")
+@export var coin_sound: AudioStream
+@export var end_sound: AudioStream
+@export var level_sound: AudioStream
+
 var level: int = 1
 var score: int = 0
 var time_left: int = 0
@@ -46,6 +52,8 @@ func spawn_coins() -> void:
 			randi_range(0, DisplayServer.window_get_size().y)
 			)
 		print(c.position)
+	$Audio/AudioStreamPlayer.stream = level_sound
+	$Audio/AudioStreamPlayer.play()
 
 
 func update_score(amount: int) -> int:
@@ -55,6 +63,8 @@ func update_score(amount: int) -> int:
 
 func game_over() -> void:
 	playing = false
+	$Audio/AudioStreamPlayer.stream = end_sound
+	$Audio/AudioStreamPlayer.play()
 	$GameTimer.stop()
 	get_tree().call_group("coins", "queue_free")
 	$Background/HUD.show_game_over()
@@ -66,6 +76,8 @@ func _on_hud_start_game() -> void:
 
 
 func _on_player_pickup(amount: int) -> void:
+	$Audio/AudioStreamPlayer.stream = coin_sound
+	$Audio/AudioStreamPlayer.play()
 	update_hud_score.emit(update_score(amount))
 
 

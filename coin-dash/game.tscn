@@ -1,15 +1,21 @@
-[gd_scene load_steps=6 format=3 uid="uid://htc36o21x7hb"]
+[gd_scene load_steps=9 format=3 uid="uid://htc36o21x7hb"]
 
 [ext_resource type="PackedScene" uid="uid://n6rs7naiycf3" path="res://player.tscn" id="1_e2o6t"]
 [ext_resource type="Script" uid="uid://djsd6a71vkhvn" path="res://scripts/game.gd" id="1_fc0e3"]
 [ext_resource type="Texture2D" uid="uid://db8h8v1xpdad2" path="res://assets/grass.png" id="2_7jktm"]
 [ext_resource type="PackedScene" uid="uid://bgq625uqqmo83" path="res://coin.tscn" id="2_feb5d"]
+[ext_resource type="AudioStream" uid="uid://b3vkcdau1a0tc" path="res://assets/audio/Coin.wav" id="3_j5wjh"]
 [ext_resource type="PackedScene" uid="uid://b73t3amrootsr" path="res://HUD.tscn" id="4_7jktm"]
+[ext_resource type="AudioStream" uid="uid://dcg7on4ny41uk" path="res://assets/audio/EndSound.wav" id="4_vef74"]
+[ext_resource type="AudioStream" uid="uid://bw8llwsatwaqt" path="res://assets/audio/Level.wav" id="5_hve3p"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_fc0e3")
 coin_scene = ExtResource("2_feb5d")
 playtime = 10
+coin_sound = ExtResource("3_j5wjh")
+end_sound = ExtResource("4_vef74")
+level_sound = ExtResource("5_hve3p")
 
 [node name="Background" type="TextureRect" parent="."]
 offset_right = 480.0
@@ -24,6 +30,10 @@ layout_mode = 1
 
 [node name="Player" parent="." instance=ExtResource("1_e2o6t")]
 position = Vector2(148, 294)
+
+[node name="Audio" type="Node" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Audio"]
 
 [connection signal="new_level" from="." to="Background/HUD" method="_on_game_new_level"]
 [connection signal="update_hud_score" from="." to="Background/HUD" method="_on_game_update_hud_score"]
