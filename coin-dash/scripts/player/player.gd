@@ -1,0 +1,31 @@
+extends Area2D
+
+signal pickup(amount: int, type: String)
+signal hurt
+
+@export var speed: int = 350
+
+func _init() -> void:
+	reset_player_position()
+
+
+func reset_player_position() -> void:
+	position.x = DisplayServer.window_get_size().x / 2
+	position.y = DisplayServer.window_get_size().y / 2
+
+
+func die() -> void:
+	#hurt.emit()
+	set_process(false)
+
+
+func _on_area_entered(area: Area2D) -> void:
+	if area.is_in_group('coins'):
+		area.pickup()
+		pickup.emit(area.points, "coin")
+	if area.is_in_group('powerups'):
+		area.pickup()
+		pickup.emit(0, "powerup")
+	if area.is_in_group('obstacles'):
+		die()
+		hurt.emit()
