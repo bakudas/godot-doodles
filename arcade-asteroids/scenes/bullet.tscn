@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://d2ih2angydrfw"]
+
+[ext_resource type="Texture2D" uid="uid://b2stdwcueoqah" path="res://assets/laser.png" id="1_mkf8s"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mkf8s"]
+size = Vector2(54, 12)
+
+[node name="Bullet" type="Area2D" unique_id=2056322230]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=964687727]
+texture = ExtResource("1_mkf8s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=202575321]
+shape = SubResource("RectangleShape2D_mkf8s")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1078838523]
+rect = Rect2(-26, -5, 52, 10)
