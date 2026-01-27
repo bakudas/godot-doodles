@@ -15,6 +15,10 @@ run/main_scene="uid://5tphxxfx3x55"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[global_group]
+
+rocks=""
+
 [input]
 
 rotate_left={
