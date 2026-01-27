@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://r3e1i710iof3"
-path="res://.godot/imported/player_FSM.jpg-faaa9eaa8363f7a0ef91dab775677932.ctex"
+path="res://.godot/imported/player_FSM.jpg-d2f1930c9866518eb779f019edb44d9d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://player_FSM.jpg"
-dest_files=["res://.godot/imported/player_FSM.jpg-faaa9eaa8363f7a0ef91dab775677932.ctex"]
+source_file="res://diagrams/player_FSM.jpg"
+dest_files=["res://.godot/imported/player_FSM.jpg-d2f1930c9866518eb779f019edb44d9d.ctex"]
 
 [params]
 

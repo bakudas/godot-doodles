@@ -20,3 +20,15 @@ func spawn_rock(size, pos=null, vel=null) -> void:
 	r.screensize = screensize
 	r.start(pos, vel, size)
 	call_deferred("add_child", r)
+	r.exploded.connect(self._on_rock_exploded) # connect signal rock explode
+
+
+func _on_rock_exploded(size: int, radius: float, pos: Vector2, vel: Vector2) -> void:
+	if size <= 1: 
+		return
+	for offset in [-1, 1]:
+		var dir: Vector2 = $Player.position.direction_to(pos).orthogonal() * offset
+		var new_pos: Vector2 = pos + dir * radius
+		var new_vel: Vector2 = dir * vel.length()
+		spawn_rock(size - 1, new_pos, new_vel)
+	

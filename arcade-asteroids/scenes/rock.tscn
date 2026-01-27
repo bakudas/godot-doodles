@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ch0qsn0ng71uv" path="res://scripts/rock.gd" id="1_1di36"]
 [ext_resource type="Texture2D" uid="uid://dr702t55wrj6o" path="res://assets/rock.png" id="2_mek2u"]
+[ext_resource type="PackedScene" uid="uid://fqoko1vutv2i" path="res://scenes/explosion.tscn" id="3_ik6fu"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_t8sxr"]
 bounce = 1.0
@@ -16,3 +17,7 @@ script = ExtResource("1_1di36")
 texture = ExtResource("2_mek2u")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=193806596]
+
+[node name="Explosion" parent="." unique_id=792553407 instance=ExtResource("3_ik6fu")]
+visible = false
+position = Vector2(2, -1)
