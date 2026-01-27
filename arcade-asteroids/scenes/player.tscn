@@ -8,6 +8,7 @@ radius = 28.284271
 
 [node name="Player" type="RigidBody2D" unique_id=1016089088]
 script = ExtResource("1_g2els")
+fire_rate = 0.1
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1537418937]
@@ -22,3 +23,5 @@ shape = SubResource("CircleShape2D_3vyb7")
 position = Vector2(50, 0)
 
 [node name="GunCooldown" type="Timer" parent="." unique_id=2111104874]
+
+[connection signal="timeout" from="GunCooldown" to="." method="_on_gun_cooldown_timeout"]

@@ -7,11 +7,15 @@ var state: STATES = STATES.INIT
 var thrust: Vector2 = Vector2.ZERO
 var rotation_dir: int = 0
 var screensize: Vector2
+@export var bullet_scene: PackedScene = preload("res://scenes/bullet.tscn")
+@export var fire_rate: float = 0.25
+var can_shoot: bool = true
 
 
 func _ready() -> void:
 	change_state(STATES.ALIVE)
 	screensize = get_viewport_rect().size
+	$GunCooldown.wait_time = fire_rate
 
 
 func _process(delta: float) -> void:
@@ -25,6 +29,19 @@ func get_input():
 	if Input.is_action_pressed("thrust"):
 		thrust = transform.x * engine_power
 	rotation_dir = Input.get_axis("rotate_left", "rotate_right")
+	
+	if Input.is_action_pressed("shoot") and can_shoot:
+		shoot()
+
+
+func shoot() -> void:
+	if state == STATES.INVULNERABLE:
+		return
+	can_shoot = false
+	$GunCooldown.start()
+	var b = bullet_scene.instantiate()
+	get_tree().root.add_child(b)
+	b.start($Muzzle.global_transform)
 
 
 func _physics_process(delta: float) -> void:
@@ -50,3 +67,7 @@ func change_state(new_state: STATES) -> void:
 		STATES.DEAD:
 			$CollisionShape2D.set_deferred('disabled', true)
 	state = new_state
+
+
+func _on_gun_cooldown_timeout() -> void:
+	can_shoot = true
