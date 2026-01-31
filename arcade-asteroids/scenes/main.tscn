@@ -12,6 +12,7 @@ _data = {
 point_count = 6
 
 [node name="Main" type="Node2D" unique_id=1898612454]
+process_mode = 3
 script = ExtResource("1_sugp2")
 
 [node name="Background" type="Sprite2D" parent="." unique_id=1134413042]

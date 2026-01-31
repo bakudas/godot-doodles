@@ -19,6 +19,20 @@ func _process(delta: float) -> void:
 		new_level()
 
 
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("pause"):
+		if not is_playing:
+			return
+		get_tree().paused = not get_tree().paused
+		var message = $HUD/VBoxContainer/Message
+		if get_tree().paused:
+			message.text = "Paused"
+			message.show()
+		else:
+			message.text = ""
+			message.hide()
+
+
 func new_game() -> void:
 	# remove any old rocks from previous run
 	get_tree().call_group('rocks', "queue_free")
