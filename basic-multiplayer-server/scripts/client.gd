@@ -7,6 +7,6 @@ var peer: ENetMultiplayerPeer = ENetMultiplayerPeer.new()
 
 
 func _ready() -> void:
-	var error: Error = peer.create_client(HOST, PORT)
+	var _error: Error = peer.create_client(HOST, PORT)
 	multiplayer.multiplayer_peer = peer
 	
