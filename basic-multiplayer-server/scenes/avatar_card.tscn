@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://dw3ov2wypqbek"]
+
+[ext_resource type="Script" uid="uid://dycfi2ll5e00d" path="res://scripts/avatar_card.gd" id="1_wdu4y"]
+[ext_resource type="Texture2D" uid="uid://6i2jkpn44quc" path="res://avatar01.png" id="2_cssa7"]
+
+[node name="AvatarCard" type="Control" unique_id=436199261]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_wdu4y")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=960995733]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -320.0
+offset_right = 320.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer" unique_id=1606652472]
+custom_minimum_size = Vector2(256, 256)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_cssa7")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=412729204]
+layout_mode = 2
+text = "nome player"
+horizontal_alignment = 1

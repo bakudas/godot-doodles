@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://baoncaj2qjo3t" path="res://assets/space_background.png" id="1_o5qli"]
 [ext_resource type="Script" uid="uid://c0r7t7loi51di" path="res://scripts/main.gd" id="1_sugp2"]
 [ext_resource type="PackedScene" uid="uid://dfsgrf3wdnxte" path="res://scenes/player.tscn" id="2_0wfyh"]
+[ext_resource type="PackedScene" uid="uid://dwfptg0lohfrd" path="res://scenes/hud.tscn" id="4_jyhfs"]
 
 [sub_resource type="Curve2D" id="Curve2D_0wfyh"]
 _data = {
@@ -11,6 +12,7 @@ _data = {
 point_count = 6
 
 [node name="Main" type="Node2D" unique_id=1898612454]
+process_mode = 3
 script = ExtResource("1_sugp2")
 
 [node name="Background" type="Sprite2D" parent="." unique_id=1134413042]
@@ -19,6 +21,7 @@ scale = Vector2(0.59999996, 0.6)
 texture = ExtResource("1_o5qli")
 
 [node name="Player" parent="." unique_id=1016089088 instance=ExtResource("2_0wfyh")]
+visible = false
 position = Vector2(366, 357)
 
 [node name="RockPath" type="Path2D" parent="." unique_id=1328480304]
@@ -28,3 +31,9 @@ curve = SubResource("Curve2D_0wfyh")
 [node name="RockSpawn" type="PathFollow2D" parent="RockPath" unique_id=1454331224]
 position = Vector2(-367, -357)
 rotation = 1.5692531
+
+[node name="HUD" parent="." unique_id=1749774941 instance=ExtResource("4_jyhfs")]
+
+[connection signal="dead" from="Player" to="." method="game_over"]
+[connection signal="lives_changed" from="Player" to="HUD" method="update_lives"]
+[connection signal="start_game" from="HUD" to="." method="new_game"]

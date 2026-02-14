@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bpyd5jjr67dqn"]
+
+[ext_resource type="Script" uid="uid://ckt6tasekceg8" path="res://scripts/AuthenticationCredentials.gd" id="1_ro4lu"]
+
+[node name="Auth" type="Node2D" unique_id=607286058]
+script = ExtResource("1_ro4lu")

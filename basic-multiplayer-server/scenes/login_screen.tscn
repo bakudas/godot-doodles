@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://cqrsxxv5hkcfu"]
+
+[ext_resource type="Script" uid="uid://b8swnov67gwf" path="res://scripts/udp_login_screen.gd" id="1_frse4"]
+
+[node name="LoginScreen" type="Control" unique_id=1301405064]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_frse4")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=454095464]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=453103988]
+layout_mode = 2
+text = "Login Screen"
+horizontal_alignment = 1
+
+[node name="UserLineEdit" type="LineEdit" parent="VBoxContainer" unique_id=723956217]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+placeholder_text = "username"
+
+[node name="PassLineEdit" type="LineEdit" parent="VBoxContainer" unique_id=2066125794]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+placeholder_text = "password"
+secret = true
+
+[node name="LoginButton" type="Button" parent="VBoxContainer" unique_id=854727198]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Login"
+
+[node name="ErroMessage" type="Label" parent="VBoxContainer" unique_id=1353151812]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[connection signal="pressed" from="VBoxContainer/LoginButton" to="." method="_on_login_button_pressed"]
