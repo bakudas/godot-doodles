@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bsg2reaftjtu4"]
 
-[ext_resource type="Script" uid="uid://b78bbwsjoi0nh" path="res://scripts/avatar_screen.gd" id="1_ppl4b"]
+[ext_resource type="Script" uid="uid://b78bbwsjoi0nh" path="res://scripts/udp_avatar_screen.gd" id="1_0fiii"]
 
 [node name="AvatarScreen" type="Control" unique_id=440305674]
 layout_mode = 3
@@ -10,7 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_ppl4b")
+script = ExtResource("1_0fiii")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1069611532]
 layout_mode = 1

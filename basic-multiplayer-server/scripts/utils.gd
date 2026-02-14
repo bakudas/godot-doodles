@@ -1,0 +1,3 @@
+extends Node
+
+enum CHANNEL { GAME_STATE=0, PLAYER_MOVEMENT, CHAT }

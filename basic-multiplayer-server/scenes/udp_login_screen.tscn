@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://cqrsxxv5hkcfu"]
+[gd_scene format=3 uid="uid://bww5yqqoturhs"]
 
-[ext_resource type="Script" uid="uid://b8swnov67gwf" path="res://scripts/udp_login_screen.gd" id="1_frse4"]
+[ext_resource type="Script" uid="uid://b8swnov67gwf" path="res://scripts/udp_login_screen.gd" id="1_4iwpu"]
 
 [node name="LoginScreen" type="Control" unique_id=1301405064]
 layout_mode = 3
@@ -9,7 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_frse4")
+script = ExtResource("1_4iwpu")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=454095464]
 layout_mode = 1

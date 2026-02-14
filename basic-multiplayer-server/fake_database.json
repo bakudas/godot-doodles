@@ -1,7 +1,12 @@
 {
 	"bakudas": {
 		"password": "12345",
-		"avatar": "res://icon.svg",
+		"avatar": "res://avatar01.png",
 		"name": "bakudas"
+	},
+	"mel": {
+		"password": "12345",
+		"avatar": "res://avatar02.jpg",
+		"name": "amélie"
 	}
 }
